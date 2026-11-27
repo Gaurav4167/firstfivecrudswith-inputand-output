@@ -12,6 +12,7 @@ import { SnackBarService } from 'src/core/services/snack-bar.service';
 })
 export class ProductFormComponent implements OnInit, OnChanges {
 
+  disableDeleteButton !: string
   @ViewChild('formRef') formRef !: NgForm
   isInEditMode : boolean = false
   edit_id !: string 
@@ -23,6 +24,7 @@ export class ProductFormComponent implements OnInit, OnChanges {
   // @Output() emitNewProduct : EventEmitter<Iproduct> = new EventEmitter<Iproduct>()
   @Output() emitNewProduct : EventEmitter<Iproduct> = new EventEmitter<Iproduct>()
   @Output() emitUpdatedProduct : EventEmitter<Iproduct> = new EventEmitter<Iproduct>()
+  // @Output() emidUpdateId : EventEmitter<string> = new EventEmitter<string>()
 
   ngOnInit(): void {
 
@@ -55,10 +57,8 @@ export class ProductFormComponent implements OnInit, OnChanges {
      this.formRef.form.reset()
      this._snackBar.showSnackbar("Product updated successfully!!!", "success")
      this.isInEditMode = false
+    //  this.disableDeleteButton = updatedProduct.id
 
   }
-
-  
-
 
 }

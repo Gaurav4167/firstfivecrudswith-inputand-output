@@ -23,12 +23,16 @@
                                 <td> {{product.price}} </td>
                                 <td> {{product.quantity}} </td>
                                 <td class="text-center">
+
                                     <button (click)="onEdit(product)" mat-raised-button mat-mini-fab color="primary">
                                         <mat-icon>edit</mat-icon>
                                     </button>
+
                                 </td>
                                 <td class="text-center">
-                                     <button (click)="onRemove(product.id)" mat-raised-button mat-mini-fab color="warn">
+                                     <button 
+                                     [disabled]="disableDeleteButton === product.id"
+                                     (click)="onRemove(product.id)" mat-raised-button mat-mini-fab color="warn">
                                     <mat-icon>delete</mat-icon>
                                 </button>
                                 </td>

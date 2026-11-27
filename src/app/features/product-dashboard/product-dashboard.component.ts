@@ -9,6 +9,7 @@ import { ProductService } from 'src/core/services/product.service';
 })
 export class ProductDashboardComponent implements OnInit {
 
+  enableDeleteButton !: string
   editedProduct !: Iproduct 
   constructor( private _product : ProductService) {
 
@@ -30,6 +31,11 @@ export class ProductDashboardComponent implements OnInit {
   onUpdateProduct(updatedProduct : Iproduct){
     let getIndex = this.productsArr.findIndex(ele => ele.id = updatedProduct.id)
     this.productsArr[getIndex] = updatedProduct
+    this.enableDeleteButton = ""
+  }
+
+  disbleDeleteFunction(){
+
   }
 
   removeProduct(id : string){

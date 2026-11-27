@@ -11,8 +11,10 @@
         <div class="col-md-6">
             <app-product-list
             [products]="productsArr"
+            (emitRemoveId)="disbleDeleteFunction()"
             (emitEditPrd)="onEditProduct($event)"
             (emitRemoveId)="removeProduct($event)"
+            [enableDeleteButton]="enableDeleteButton"
             >
             </app-product-list>
         </div>
