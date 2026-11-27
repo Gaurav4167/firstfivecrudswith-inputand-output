@@ -1,0 +1,8 @@
+<div>
+    <app-todo-child [todosArr]="todosArr"
+    (newTodoEmitter)="newTodo($event)"
+    (updatedTodoEmitter)="updatedTodo($event)"
+    (deleteTodoEmitter)="deleteTodo($event)"
+
+    ></app-todo-child>
+</div>

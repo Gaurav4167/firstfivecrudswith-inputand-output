@@ -1,0 +1,66 @@
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="bg-success p-2 text-white"># Post API Call</h3>
+        </div>
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">
+                        <strong>
+                            {{isInEditMode ? 'Update Post' : 'Add Post'}}
+                        </strong>
+                    </h3>
+                </div>
+                <div class="card-body">
+
+                    <label for="title"><b>Title</b></label>
+                    <input #titleRef class="form-control mb-3" id="title" type="text">
+
+                    <label for="content"><b>Content</b></label>
+                    <input #contentRef class="form-control mb-3" id="content" type="text">
+
+                    <button (click)="onAddNewPost()" *ngIf="!isInEditMode ; else showUpdateButton" class="btn btn-primary w-100">Add
+                        Post</button>
+
+                    <ng-template #showUpdateButton>
+                        <button (click)="onUpdatePost()" class="btn btn-primary w-100">Update Post</button>
+                    </ng-template>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mt-3" *ngFor="let post of postArr">
+            <div class="card ">
+                <div class="card-header data-card-heading">
+                    <div>
+                        <h3>
+                            {{post.title}}
+                        </h3>
+                    </div>
+                </div>
+                <div class="card-body data-card-body">
+
+                    <div>
+                        <p>
+                            {{post.body}}
+                        </p>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button (click)="onEditPost(post)" mat-raised-button mat-mini-fab color="primary">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="ondeletePost(post.id)" mat-raised-button mat-mini-fab color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

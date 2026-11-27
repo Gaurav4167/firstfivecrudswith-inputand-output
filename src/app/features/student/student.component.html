@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    {{isInEditMode ? 'Update Student' : 'Add Student'}}
+                </div>
+                <div class="card-body">
+                    <label for="sName"><b>Student Name: </b></label>
+                    <input #studentNameRef class="form-control mb-3" type="text" id="sName">
+
+                    <label for="email"><b>Email: </b></label>
+                    <input #emailRef class="form-control mb-3" type="text" id="email">
+
+                    <label for="course"><b>Course: </b></label>
+                    <input #courseRef class="form-control mb-3" type="text" id="course">
+
+                    <label for="fees"><b>Fees: </b></label>
+                    <input #feesRef class="form-control mb-3" type="text" id="fees">
+
+                    <label for="degree"><b>Degree: </b></label>
+                    <input #degreeRef class="form-control mb-3" type="text" id="degree">
+
+                    <label for="city"><b>City: </b></label>
+                    <input #cityRef class="form-control mb-3" type="text" id="city">
+
+                    <div>
+                        <button (click)="onAddNewStudent()" *ngIf="!isInEditMode else showUpdateButton" class="btn btn-primary shadow w-100">Add Student</button>
+                        
+                        <ng-template #showUpdateButton>
+                            <button (click)="onUpdateStudent()" class="btn btn-primary shadow w-100">Update</button>
+                        </ng-template>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th>Fees</th>
+                                <th>Degree</th>
+                                <th>City</th>
+                                <th>Edit</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let student of students; let i=index" >
+                                <td> {{i + 1}} </td>
+                                <td> {{student.sName}} </td>
+                                <td> {{student.email}} </td>
+                                <td> {{student.course}} </td>
+                                <td> {{student.fees}} </td>
+                                <td> {{student.degree}} </td>
+                                <td> {{student.city}} </td>
+                                <td> <button (click)="onEditStudent(student)" mat-mini-fab class="text-primary" color="primary"
+                                        aria-label="Example icon button with a menu icon">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </td>
+                                <td> <button (click)="onRemoveStudent(student.id)" mat-mini-fab class="text-danger" color="warn"
+                                        aria-label="Example icon button with a menu icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
